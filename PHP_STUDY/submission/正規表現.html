@@ -1,0 +1,77 @@
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        <div id="message">
+        </div>
+        <form>
+            <hr/>
+            <label>ABC：</label>
+            <input type="text" name="name"  id="inputName"  maxlength="100" value="" placeholder="ABC">
+            <br/>
+            <label>ABCXYZ：</label>
+            <input type="number" name="age" id="inputAge" value="">
+            <br/>
+            <label>DEF：</label>
+            <input type="text" name="mail" id="inputPass" maxlength="100" value="" placeholder="DEF">
+            <br/>            
+            <input type="button" id="btnSubmit" value="送信">
+            <label>Aatto：</label>
+            <input type="number" name="age" id="inputAatto" value="">
+            <br/>
+            <label>number：</label>
+            <input type="number" name="age" id="inputnumber" value="">
+            <br/>
+            <label>komozi：</label>
+            <input type="number" name="age" id="inputkomozi" value="">
+            <br/>
+            <hr/>
+        </form>
+    </body>
+</html>
+
+<script>
+    window.onload = function(){
+        /*各画面オブジェクト*/
+        const btnSubmit = document.getElementById('btnSubmit');
+        const inputName = document.getElementById('inputName');
+        const inputAge = document.getElementById('inputAge');
+        const inputMail = document.getElementById('inputPass');
+        const reg = /[A-C]:/;
+        const namereg = /[A-C][X-Z]/;
+        const degreg =  /[D-F]:/;
+        const attoreg = /[A-Z][@][A-Z]:/;
+        const numberreg = /[0-9][0-9][0-9]:/;
+        const komozireg = /[a-z][a-z][a-z][a-z][a-z][a-z]:/;
+        
+        btnSubmit.addEventListener('click', function(event) {
+            let message = [];
+            /*入力値チェック*/
+            if(inputName.value ==""){
+                message.push("ABCが未入力です。");
+            }else if(!namereg.test(inputName.value)){
+                message.push("ABCの形式が不正です。");
+            }
+            if(inputAge.value==""){
+                message.push("XYZが未入力です。");
+            }
+            if(inputAatto.value==""){
+                message.push("Aattoが未入力です。");
+            }
+            if(inputMail.value==""){
+                message.push("DEFが未入力です。");
+            }
+            if(inputkomozi.value==""){
+                message.push("komoziが未入力です。");
+            }
+            if(inputAatto.value==""){
+                message.push("numberが未入力です。");
+            }
+            if(message.length > 0){
+                alert(message);
+                return;
+            }
+            alert('送信完了');
+        });
+    };
+</script>
